@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "906749263808",
+    "project_id": "wa-clone-backend",
+    "storage_bucket": "wa-clone-backend.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:906749263808:android:b9ef70eefed3a5735ad225",
+        "android_client_info": {
+          "package_name": "com.example.wa_clone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "906749263808-tu806aati4vm40bsk5jfp05pngm8hgs0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wa_clone",
+            "certificate_hash": "ee2e9ffbd91b5127c85011284eb30bc15e2fe7ae"
+          }
+        },
+        {
+          "client_id": "906749263808-jmge8f0ohb8e7tmoq8qmip43244tsc5h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhDzttYvQkdEycZ5KVPPzSHW_7xtDSw9E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "906749263808-jmge8f0ohb8e7tmoq8qmip43244tsc5h.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "906749263808-id76aun7pb8ll152us7646nkdfl0nkm6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.waClone"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
