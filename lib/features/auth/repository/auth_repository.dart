@@ -1,17 +1,15 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'dart:io';
-import 'package:wa_clone/common/utils/utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:wa_clone/features/auth/screens/login_screen.dart';
+import 'package:wa_clone/common/repositories/common_firebase_storage_repository.dart';
+import 'package:wa_clone/common/utils/utils.dart';
+import 'package:wa_clone/features/auth/screens/otp_screen.dart';
 import 'package:wa_clone/features/auth/screens/user_information_screen.dart';
-
-import '../../../common/repositories/common_firebase_storage_repository.dart';
-import '../../../models/user_model.dart';
-import '../../../screens/mobile_layout_screen.dart';
-import '../screens/otp_screen.dart';
+import 'package:wa_clone/models/user_model.dart';
+import 'package:wa_clone/mobile_layout_screen.dart';
 
 final authRepositoryProvider = Provider(
       (ref) => AuthRepository(
@@ -125,5 +123,19 @@ class AuthRepository {
     } catch (e) {
       showSnackBar(context: context, content: e.toString());
     }
+  }
+
+  Stream<UserModel> userData(String userId) {
+    return firestore.collection('users').doc(userId).snapshots().map(
+          (event) => UserModel.fromMap(
+        event.data()!,
+      ),
+    );
+  }
+
+  void setUserState(bool isOnline) async {
+    await firestore.collection('users').doc(auth.currentUser!.uid).update({
+      'isOnline': isOnline,
+    });
   }
 }

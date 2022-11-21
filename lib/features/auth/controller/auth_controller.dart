@@ -1,8 +1,9 @@
 import 'dart:io';
-import 'package:wa_clone/models/user_model.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../repository/auth_repository.dart';
+
+import 'package:wa_clone/features/auth/repository/auth_repository.dart';
+import 'package:wa_clone/models/user_model.dart';
 
 final authControllerProvider = Provider((ref) {
   final authRepository = ref.watch(authRepositoryProvider);
@@ -13,6 +14,7 @@ final userDataAuthProvider = FutureProvider((ref) {
   final authController = ref.watch(authControllerProvider);
   return authController.getUserData();
 });
+
 class AuthController {
   final AuthRepository authRepository;
   final ProviderRef ref;
@@ -26,9 +28,18 @@ class AuthController {
     return user;
   }
 
-  void signInWithPhone(BuildContext context,String phoneNumber){
+  void signInWithPhone(BuildContext context, String phoneNumber) {
     authRepository.signInWithPhone(context, phoneNumber);
   }
+
+  void verifyOTP(BuildContext context, String verificationId, String userOTP) {
+    authRepository.verifyOTP(
+      context: context,
+      verificationId: verificationId,
+      userOTP: userOTP,
+    );
+  }
+
   void saveUserDataToFirebase(
       BuildContext context, String name, File? profilePic) {
     authRepository.saveUserDataToFirebase(
@@ -39,8 +50,11 @@ class AuthController {
     );
   }
 
-  void verifyOTP(BuildContext context,String verificationId,String userOTP){
-    authRepository.verifyOTP(context: context, verificationId: verificationId, userOTP: userOTP);
+  Stream<UserModel> userDataById(String userId) {
+    return authRepository.userData(userId);
   }
 
+  void setUserState(bool isOnline) {
+    authRepository.setUserState(isOnline);
+  }
 }
