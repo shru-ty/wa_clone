@@ -109,17 +109,17 @@ class _BottomChatFieldState extends ConsumerState<BottomChatField> {
     }
   }
 
-  void selectGIF() async {
-    final gif = await pickGIF(context);
-    if (gif != null) {
-      ref.read(chatControllerProvider).sendGIFMessage(
-        context,
-        gif.url,
-        widget.recieverUserId,
-        widget.isGroupChat,
-      );
-    }
-  }
+  // void selectGIF() async {
+  //   final gif = await pickGIF(context);
+  //   if (gif != null) {
+  //     ref.read(chatControllerProvider).sendGIFMessage(
+  //       context,
+  //       gif.url,
+  //       widget.recieverUserId,
+  //       widget.isGroupChat,
+  //     );
+  //   }
+  // }
 
   void hideEmojiContainer() {
     setState(() {
@@ -194,13 +194,13 @@ class _BottomChatFieldState extends ConsumerState<BottomChatField> {
                               color: Colors.grey,
                             ),
                           ),
-                          IconButton(
-                            onPressed: selectGIF,
-                            icon: const Icon(
-                              Icons.gif,
-                              color: Colors.grey,
-                            ),
-                          ),
+                          // IconButton(
+                          //   onPressed: selectGIF,
+                          //   icon: const Icon(
+                          //     Icons.gif,
+                          //     color: Colors.grey,
+                          //   ),
+                          // ),
                         ],
                       ),
                     ),
